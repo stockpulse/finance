@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs height="300" title="BlogSocial">
+  <Require feature="skins"/>
+  <Require feature="views"/>
+ </ModulePrefs>
+ <UserPref name="url" datatype="hidden" default_value="http://1-dot-st0ck-pulse.appspot.com/index.html"/>
+< <Content type="html">
+<![CDATA[
+	<iframe id="templateIframe" frameborder="0" marginwidth="0" scrolling="no" marginheight="0" width="288" height="360" src=""></iframe>
+	<script type='text/javascript'>
+	 var url = prefs.getString("url");;
+	 url+= '?TemplateID=' + tmpltID;
+	 url += '&email=' + email;
+	 url += '&backcolor=' + color;
+	 url += '&lang=' + lang;
+	 document.getElementById('templateIframe').src = url;
+	</script>
+]]
+
+  </Content>
+</Module>

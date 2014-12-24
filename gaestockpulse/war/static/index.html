@@ -1,0 +1,59 @@
+<!-- 
+ * http://www.stock-pulse.com
+ * Licensed under the Apache License, Version 2.0 (the "License"); <br/>
+ * You may not use this file except in compliance with the License. <br/>
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <form role="form" id="stockpulseform">
+        <div class="form-group">
+          <label for="principal">Principal Amount  e.g: 100.50</label>
+          <input type="principal" class="form-control" name="pv" id="pv" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="interest">Annual Percent % Interest e.g: 1.3</label>
+          <input type="interest" class="form-control" name="rt" id="rt" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="term">Years eg: 2</label>
+          <input type="term" class="form-control" name="tp" id="tp" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-default" id="submitform">Submit</button>
+      </form>
+      <br/>
+	  <div id="stockpulsestatus" class="well well-sm">Future Value ?
+	  </div>
+    </div>
+	
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {        
+			$('#submitform').on('click', function() {
+                 $.ajax({
+					type: "POST",
+					url: "/timevalue",
+					data: $('#stockpulseform').serialize(),
+					success: function(response) {
+					  $('#stockpulsestatus').html(response);
+					  
+					}
+				  });
+				  return false;
+  
+            });		
+		});
+	</script>
+  </body>
+</html>
